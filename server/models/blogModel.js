@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const bolgSchema = new mongoose.Schema(
+const blogSchema = new mongoose.Schema(
   {
     image: {
       type: String,
@@ -14,8 +14,12 @@ const bolgSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Auth",
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Blog", bolgSchema);
+module.exports = mongoose.model("Blog", blogSchema);

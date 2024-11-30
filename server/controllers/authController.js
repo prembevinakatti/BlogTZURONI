@@ -27,7 +27,7 @@ module.exports.createAccount = async (req, res) => {
     });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.cookie("token", token, { expiresIn: "1d" });
+    res.cookie("token", token, { expiresIn: "1d", httpOnly: true });
 
     res.status(201).json({
       message: "Account created successfully",
@@ -60,7 +60,7 @@ module.exports.loginAccount = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.cookie("token", token, { expiresIn: "1d" });
+    res.cookie("token", token, { expiresIn: "1d", httpOnly: true });
 
     res.status(200).json({
       message: "Logged in successfully",
@@ -69,5 +69,14 @@ module.exports.loginAccount = async (req, res) => {
     });
   } catch (error) {
     console.log("Error Logging in server: ", error.message);
+  }
+};
+
+module.exports.logoutAccount = async (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logged out successfully", success: true });
+  } catch (error) {
+    console.log("Error logging out in server : ", error.message);
   }
 };

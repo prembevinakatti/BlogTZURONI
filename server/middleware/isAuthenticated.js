@@ -10,6 +10,10 @@ const isAuthenticated = async (req, res, next) => {
 
     const verified = jwt.verify(token, process.env.JWT_SECRET);
 
+    if (!verified) {
+      return res.status(403).json({ message: "Invalid Token" });
+    }
+
     req.user = verified.id;
     next();
   } catch (error) {

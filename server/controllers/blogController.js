@@ -17,6 +17,7 @@ module.exports.createBlog = async (req, res) => {
       image,
       title,
       content,
+      author: user,
     });
 
     return res.status(200).json({
@@ -37,7 +38,11 @@ module.exports.getAllBlogs = async (req, res) => {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
-    const blogs = await blogModel.find().sort({ createdAt: -1 });
+    const blogs = await blogModel
+      .find()
+      .sort({ createdAt: -1 })
+      .populate("author", "username email")
+      .exec();
 
     if (!blogs) {
       return res.status(404).json({ message: "No blogs found" });
@@ -66,7 +71,9 @@ module.exports.getBlogById = async (req, res) => {
       return res.status(400).json({ message: "Invalid blog ID" });
     }
 
-    const blog = await blogModel.findById(blogId);
+    const blog = await blogModel
+      .findById(blogId)
+      .populate("author", "username email");
 
     if (!blog) {
       return res.status(404).json({ message: "Blog not found" });

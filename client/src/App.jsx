@@ -4,33 +4,33 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
 import Dashboard from "./components/Dashboard";
-import AppLayout from "./components/AppLayout"; // Layout with navigation bar
+import AppLayout from "./components/AppLayout"; 
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Login />, // Login page as the default route
+      element: <Login />, 
     },
     {
       path: "/register",
-      element: <Register />, // Registration page
+      element: <Register />, 
     },
     {
       path: "/home",
-      element: <AppLayout />, // Layout with navigation bar
+      element: <AppLayout />,
       children: [
         {
-          index: true, // Default child route
-          element: <Home />, // Home page
+          index: true, 
+          element: <Home />, 
         },
         {
           path: "create-blog",
-          element: <CreateBlog />, // Create Blog page
+          element: <CreateBlog />,
         },
         {
           path: "dashboard",
-          element: <Dashboard />, // Dashboard page
+          element: <Dashboard />, 
         },
       ],
     },

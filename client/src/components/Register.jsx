@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setAuthUser } from "@/redux/authSlice";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -13,12 +15,12 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
 
-    // Validate password match
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -34,11 +36,18 @@ const Register = () => {
           email,
           password,
           confirmPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
         }
       );
 
       if (response.data.success) {
         toast.success(response.data.message);
+        dispatch(setAuthUser(response.data.user));
         navigate("/");
       }
     } catch (err) {

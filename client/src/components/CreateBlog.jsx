@@ -3,21 +3,27 @@ import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleImageUpload = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "your_cloudinary_preset");
+    formData.append("upload_preset", "imageupload");
 
     try {
-      const response = await axios.post("https://api.cloudinary.com/v1_1/your_cloudinary_name/image/upload", formData);
-      return response.data.secure_url; // Return the uploaded image URL
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dyp7pxrli/image/upload",
+        formData
+      );
+      return response.data.secure_url;
     } catch (err) {
       console.error("Error uploading image:", err);
       return null;
@@ -35,16 +41,28 @@ const CreateBlog = () => {
         return;
       }
 
-      await axios.post("http://your-server-url/api/blogs", {
-        title,
-        content,
-        image: imageUrl,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/posts/createBlog",
+        {
+          title,
+          content,
+          image: imageUrl,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
 
-      alert("Blog created successfully!");
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/home");
+      }
     } catch (err) {
       console.error("Error creating blog:", err);
-      alert("Failed to create blog.");
+      toast.error(response?.response?.data?.message);
     } finally {
       setLoading(false);
     }
