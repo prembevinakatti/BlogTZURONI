@@ -4,12 +4,19 @@ const connectDB = require("./config/database");
 require("dotenv").config();
 const authRoute = require("./routes/authRoute");
 const blogRoute = require("./routes/blogRoute");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+const corsOrigin = {
+  origin: "http://localhost:5173",
+  credentials: true,
+};
+app.use(cors(corsOrigin));
 
 app.use("/api/auth", authRoute);
 app.use("/api/posts", blogRoute);
