@@ -4,25 +4,25 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import CreateBlog from "./components/CreateBlog";
 import Dashboard from "./components/Dashboard";
-import AppLayout from "./components/AppLayout"; 
+import AppLayout from "./components/AppLayout";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Login />, 
+      element: <Login />,
     },
     {
       path: "/register",
-      element: <Register />, 
+      element: <Register />,
     },
     {
       path: "/home",
       element: <AppLayout />,
       children: [
         {
-          index: true, 
-          element: <Home />, 
+          index: true,
+          element: <Home />,
         },
         {
           path: "create-blog",
@@ -30,7 +30,7 @@ function App() {
         },
         {
           path: "dashboard",
-          element: <Dashboard />, 
+          element: <Dashboard />,
         },
       ],
     },

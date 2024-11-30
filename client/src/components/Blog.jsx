@@ -58,10 +58,10 @@ const BlogCard = ({ image, title, description, blogId, author }) => {
 
       {isModalOpen && fullBlog && (
         <Modal
-          title={fullBlog.title}
-          content={fullBlog.content}
-          image={fullBlog.image}
-          author={fullBlog.author.username}
+          title={fullBlog?.title}
+          content={fullBlog?.content}
+          image={fullBlog?.image}
+          author={fullBlog?.author?.username}
           onClose={handleCloseModal}
         />
       )}
