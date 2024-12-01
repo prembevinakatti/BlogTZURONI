@@ -5,8 +5,8 @@ This is a Blog Application built using **MERN Stack** (MongoDB, Express, React, 
 ---
 
 ## Features
-- User authentication and profile management.
-- Create, read, update, and delete blogs.
+- User authentication .
+- Create, read blogs.
 - Upload blog images using **Cloudinary**.
 - Responsive design with modern UI components.
 
@@ -24,10 +24,21 @@ This is a Blog Application built using **MERN Stack** (MongoDB, Express, React, 
 ### 1. Clone the Repository
 ```bash
 https://github.com/prembevinakatti/BlogTZURONI.git
+```
 
-
-### 2. Frontend
+### 2. Frontend 
 ```bash
 cd client
 npm install
+npm run dev
+```
+
+### 2. Backend 
+```bash
+cd server
+npm install
+npm run dev
+```
+
+
 
