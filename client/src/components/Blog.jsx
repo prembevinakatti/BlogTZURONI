@@ -10,7 +10,7 @@ const BlogCard = ({ image, title, description, blogId, author }) => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/posts/getBlog/${blogId}`,
+        `https://blogtzuroni.onrender.com/api/posts/getBlog/${blogId}`,
         {
           headers: {
             "Content-Type": "application/json",

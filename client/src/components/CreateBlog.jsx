@@ -42,7 +42,7 @@ const CreateBlog = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:3000/api/posts/createBlog",
+        "https://blogtzuroni.onrender.com/api/posts/createBlog",
         {
           title,
           content,

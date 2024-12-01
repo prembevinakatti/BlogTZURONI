@@ -30,7 +30,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/createAccount",
+        "https://blogtzuroni.onrender.com/api/auth/createAccount",
         {
           username,
           email,

@@ -11,7 +11,7 @@ const useGetAllBlogs = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "http://localhost:3000/api/posts/getAllBlogs",
+          "https://blogtzuroni.onrender.com/api/posts/getAllBlogs",
           {
             headers: {
               "Content-Type": "application/json",

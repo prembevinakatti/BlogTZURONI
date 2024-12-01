@@ -22,7 +22,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/loginAccount",
+        "https://blogtzuroni.onrender.com/api/auth/loginAccount",
         {
           email,
           password,

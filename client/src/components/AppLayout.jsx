@@ -15,7 +15,7 @@ const AppLayout = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/auth/logoutAccount`,
+        `https://blogtzuroni.onrender.com/api/auth/logoutAccount`,
         {
           headers: {
             "Content-Type": "application/json",
