@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOrigin = {
-  origin: "https://blogtzuroni-demo.onrender.com/",
+  origin: "https://blogtzuroni-demo.onrender.com",
   credentials: true,
 };
 app.use(cors(corsOrigin));
