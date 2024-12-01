@@ -23,7 +23,7 @@ This is a Blog Application built using **MERN Stack** (MongoDB, Express, React, 
 
 ### 1. Clone the Repository
 ```bash
-https://github.com/prembevinakatti/BlogTZURONI.git
+git clone https://github.com/prembevinakatti/BlogTZURONI.git
 ```
 
 ### 2. Frontend 
