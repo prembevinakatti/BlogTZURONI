@@ -23,5 +23,11 @@ This is a Blog Application built using **MERN Stack** (MongoDB, Express, React, 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/your-blog-app.git
-cd your-blog-app
+https://github.com/prembevinakatti/BlogTZURONI.git
+
+
+### 2. Frontend
+```bash
+cd client
+npm install
+
